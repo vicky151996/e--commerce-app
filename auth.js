@@ -1,8 +1,21 @@
+// SIGNUP
 function signup() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
+  if (!username || !password) {
+    alert("Please fill all fields");
+    return;
+  }
+
   let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // check if user exists
+  const exists = users.find(u => u.username === username);
+  if (exists) {
+    alert("User already exists!");
+    return;
+  }
 
   users.push({ username, password });
 
@@ -12,6 +25,8 @@ function signup() {
   window.location.href = "login.html";
 }
 
+
+// LOGIN
 function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
@@ -25,8 +40,8 @@ function login() {
   if (user) {
     localStorage.setItem("loggedInUser", JSON.stringify(user));
     alert("Login successful!");
-    window.location.href = "index.html";
+    window.location.href = "index.html"; // your main app
   } else {
-    alert("Invalid credentials");
+    alert("Invalid username or password");
   }
 }
