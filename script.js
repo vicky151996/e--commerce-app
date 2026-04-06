@@ -90,6 +90,10 @@ filter.addEventListener("change", () => {
 
   displayProducts(sorted);
 });
+function logout() {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "login.html";
+}
 
 displayProducts();
 updateCartCount();
