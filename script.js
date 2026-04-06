@@ -1,6 +1,7 @@
 const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
-if (!user) {
+// Only run redirect if NOT already on login/signup page
+if (!user && !window.location.pathname.includes("login.html") && !window.location.pathname.includes("signup.html")) {
   window.location.href = "login.html";
 }
 const products = [
